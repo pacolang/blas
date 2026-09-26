@@ -9,7 +9,7 @@
   <h1 align="center">Paco BLAS</h1>
 
   <p align="center">
-    Bindings oficiales de BLAS para Paco — un acelerador opcional para el matmul de pacolang/tensor a través del libblas del sistema
+    Bindings oficiales de BLAS para Paco — un acelerador opcional para el Matrix multiply de pacolang/math a través del libblas del sistema
     <br />
     <a href="https://github.com/pacolang/paco"><strong>Explora el compilador paco »</strong></a>
     <br />
@@ -46,18 +46,20 @@
 ## Sobre el Proyecto
 
 Este repositorio es el destino planeado para los bindings oficiales de
-BLAS de Paco — un acelerador opcional que permite que el `matmul` de
-[`pacolang/tensor`](https://github.com/pacolang/tensor) llame al
+BLAS de Paco — un acelerador opcional que permite que el `Matrix::matmul`
+de [`pacolang/math`](https://github.com/pacolang/math) llame al
 `libblas` del sistema en lugar de su propia implementación
-predeterminada. **Todavía no han sido extraídos**. Por ahora, este
-repositorio contiene solo este README y el archivo `LICENSE`; no hay
-código aquí para instalar ni usar.
+predeterminada, usando el `ShapeError` de
+[`pacolang/tensor`](https://github.com/pacolang/tensor) como tipo de
+error. **Todavía no han sido extraídos**. Por ahora, este repositorio
+contiene solo este README y el archivo `LICENSE`; no hay código aquí
+para instalar ni usar.
 
 `stdlib::blas` (que define este binding hoy) todavía vive en
 [`pacolang/paco`](https://github.com/pacolang/paco). Moverlo a este
 repositorio está planeado, pero aún no se ha hecho. Ser opcional y
 enlazado dinámicamente es exactamente por lo que este binding no
-pertenece al `stdlib` ni a `pacolang/tensor` en sí — importarlo es lo
+pertenece al `stdlib` ni a `pacolang/math` en sí — importarlo es lo
 único que debería introducir enlazado dinámico en un binario de Paco
 que, de otro modo, sería estático. El razonamiento detrás de separar
 bibliotecas oficiales como esta del `stdlib` hacia sus propios
@@ -92,7 +94,7 @@ para cuando ocurra la extracción, no algo que puedas ejecutar hoy.
 ## Uso
 
 Todavía no hay código para usar. Cuando los bindings lleguen aquí,
-activar el `matmul` de [`pacolang/tensor`](https://github.com/pacolang/tensor)
+activar el `Matrix::matmul` de [`pacolang/math`](https://github.com/pacolang/math)
 para usar el `libblas` del sistema se verá así:
 
 ```paco
@@ -108,8 +110,8 @@ Hasta entonces, este binding solo está disponible donde vive hoy, en
 - [ ] Extraer el binding de `libblas` de `stdlib::blas` de
       `pacolang/paco` hacia este repositorio, según la
       [RFC 0030](https://github.com/pacolang/rfcs/blob/main/text/0030-repository-organization-and-stdlib-scope.md),
-      después de que el `matmul` de
-      [`pacolang/tensor`](https://github.com/pacolang/tensor) tenga un
+      después de que el `Matrix::matmul` de
+      [`pacolang/math`](https://github.com/pacolang/math) tenga un
       punto de extensión estable para acelerar.
 - [ ] Declarar un rango de versiones compatibles del compilador `paco` en
       `paco.mod`.
